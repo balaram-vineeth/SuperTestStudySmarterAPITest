@@ -31,21 +31,5 @@ describe('The user is able to signup and create a study set', () => {
 
     });
 
-    // it('GET Response',async () => {
-    //     let study_set = await client().get('https://be.dev.studysmarter-test.de/users/6767645/course-subjects/9081068/')
-    //     .set('Authorization', 'Token f41ffbb94ade38d5d020a2d56cd98fe872985108').send();
-    //     // .set('Host', 'demo.studysmarter.de')
-    //     // .set('authority', 'be.dev.studysmarter-test.de')
-    //     // .set('Accept-Encoding', 'gzip, deflate, br')
-    //     // .set('content-type', 'application/json')
-    //     // .set('dnt', '1')
-    //     // .set('origin', 'https://demo.studysmarter.de')
-    //     // .set('Accept', 'application/json, text/plain, */*');
-    //     checkStatusCode(study_set, 210);
-    // });
-
-
-
-
 
 })

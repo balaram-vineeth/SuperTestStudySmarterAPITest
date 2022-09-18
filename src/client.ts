@@ -1,8 +1,9 @@
+import { envData } from '../data/data';
 import * as superteste from 'supertest';
 
 
 export function client(): superteste.SuperTest<superteste.Test> {
-    return superteste('');
+    return superteste(envData.baseUrl);
 }
 
 export const checkStatusCode = (res: any, expectedStatus: any = 200): superteste.Response => {

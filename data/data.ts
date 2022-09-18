@@ -23,4 +23,8 @@ let setData = {
     "level": 0
 }
 
-export { signUpData, setData }
+let envData = {
+    "baseUrl": 'https://be.dev.studysmarter-test.de'
+}
+
+export { signUpData, setData, envData }
