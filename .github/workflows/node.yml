@@ -22,6 +22,7 @@ jobs:
     - run: npm test
 
     - name: Download a Build Artifact
+      if: always()
       uses: actions/upload-artifact@v2
       with:
         # Artifact name
