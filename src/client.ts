@@ -2,7 +2,6 @@ import * as superteste from 'supertest';
 
 
 export function client(): superteste.SuperTest<superteste.Test> {
-    const envDetails = require('../data/env.json');
     return superteste('');
 }
 
