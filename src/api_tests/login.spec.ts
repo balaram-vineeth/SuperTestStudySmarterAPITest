@@ -1,14 +1,16 @@
 import { checkStatusCode, client } from "../client"
+import { setData, signUpData } from "../../data/data";
+
 
 describe('The user is able to signup and create a study set', () => {
     
-    const body = {"email":"demoss20@mailinator.com","platform":"web","language":"en","signup_location":"webapp","delayed_confirmation_possible":true,"university":null,"course_of_studies":null,"password":"IfImtVjIygRf93i5","tracking_number":654}
+    // const body = data
 
     let user_id;
     let token;
     it('The user is able to signup', async()=> {
         await client().post('https://be.dev.studysmarter-test.de/users/')
-        .send(body).expect(201).then((reponse) => {
+        .send(signUpData).expect(201).then((reponse) => {
             expect(reponse.body.id).not.toBe(null);
             expect(reponse.body.token).not.toBe(null);   
             user_id = reponse.body.id;
@@ -18,9 +20,7 @@ describe('The user is able to signup and create a study set', () => {
 
     it(('The user should be able to create a set'),async () => {
 
-        const body = {"name":"APIT3","colorId":0,"shared":true,"exam_date":new Date(),"countries":[],"level":0}
-
-        let res = await client().post(`https://be.dev.studysmarter-test.de/users/${user_id}/course-subjects/`).set('authorization', `Token ${token}`).send(body).expect(201);
+        let res = await client().post(`https://be.dev.studysmarter-test.de/users/${user_id}/course-subjects/`).set('authorization', `Token ${token}`).send(setData).expect(201);
 
         expect(res.body.id).not.toBe(null);
         
