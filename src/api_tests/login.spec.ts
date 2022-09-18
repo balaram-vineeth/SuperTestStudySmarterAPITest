@@ -27,7 +27,7 @@ describe('The user is able to signup and create a study set', () => {
         let study_set = await client().get(`https://be.dev.studysmarter-test.de/users/${user_id}/course-subjects/${res.body.id}/`).set('authorization', `Token ${token}`).send();
         checkStatusCode(study_set, 200);
 
-        expect(study_set.body.name).toBe('APIT3');
+        expect(study_set.body.name).toBe(setData.name);
 
     });
 
