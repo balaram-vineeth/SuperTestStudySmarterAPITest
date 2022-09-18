@@ -20,7 +20,7 @@ describe('The user is able to signup and create a study set', () => {
 
     it(('The user should be able to create a set'),async () => {
 
-        let res = await client().post(`https://be.dev.studysmarter-test.de/users/${user_id}/course-subjects/`).set('authorization', `Token ${token}`).send(setData).expect(201);
+        let res = await client().post(`https://be.dev.studysmarter-test.de/users/${user_id}/course-subjects/`).set('authorization', `Token ${token}`).send(setData).expect(200);
 
         expect(res.body.id).not.toBe(null);
         
