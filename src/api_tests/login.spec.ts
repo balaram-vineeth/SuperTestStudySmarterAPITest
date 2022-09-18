@@ -1,34 +1,32 @@
-import { checkStatusCode, client } from "../client"
+import { client } from "../client"
 import { setData, signUpData } from "../../data/data";
 
 
 describe('The user is able to signup and create a study set', () => {
-    
-    // const body = data
 
     let user_id;
     let token;
-    it('The user is able to signup', async()=> {
+    it('The user is able to signup', async () => {
         await client().post('/users/')
-        .send(signUpData).expect(201).then((reponse) => {
-            expect(reponse.body.id).not.toBe(null);
-            expect(reponse.body.token).not.toBe(null);   
-            user_id = reponse.body.id;
-            token = reponse.body.token; 
-        });
+            .send(signUpData).expect(201).then((response) => {
+                expect(response.body.id).not.toBe(null);
+                expect(response.body.token).not.toBe(null);
+                user_id = response.body.id;
+                token = response.body.token;
+            });
     });
 
-    it(('The user should be able to create a set'),async () => {
+    it(('The user should be able to create a set'), async () => {
 
-        let res = await client().post(`/users/${user_id}/course-subjects/`).set('authorization', `Token ${token}`).send(setData).expect(201);
+        let response_id;
+        await client().post(`/users/${user_id}/course-subjects/`).set('authorization', `Token ${token}`).send(setData).expect(201).then((response) => {
+            expect(response.body.id).not.toBe(null);
+            response_id = response.body.id;
+        });
 
-        expect(res.body.id).not.toBe(null);
-        
-        let study_set = await client().get(`/users/${user_id}/course-subjects/${res.body.id}/`).set('authorization', `Token ${token}`).send();
-        checkStatusCode(study_set, 200);
-
-        expect(study_set.body.name).toBe(setData.name);
-
+        await client().get(`/users/${user_id}/course-subjects/${response_id}/`).set('authorization', `Token ${token}`).expect(200).send().then((response) => {
+            expect(response.body.name).toBe(setData.name);
+        });
     });
 
 
