@@ -1,3 +1,6 @@
+These tests use `Supertest` for making the requests for the assertion along with `chai`, with `jest` as the test runner. 
+`jest-stare` is used as the HTML report.
+
 ## Running the tests
 ### Running locally
 1. Run `npm install` to install all the dependencies
